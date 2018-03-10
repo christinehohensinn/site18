@@ -1,0 +1,29 @@
+---
+title: parAL
+author: 'Christine Hohensinn'
+date: '2018-03-06'
+slug: parAL
+math: TRUE
+
+weight:  20
+
+summary: 'parAL includes functions to conduct a goodness-of-fit test for the user-defined design matrix of a Linear Logistic Test model (LLTM)'
+image_preview: 'headers/designmatrixParal.png'
+
+categories:
+  - R
+tags: ["R", "parAL", "IRT", "Rasch model", "LLTM", "Construct Validity"]
+---
+
+The main application field of the Linear Logistic Test model (LLTM) by now is Psychological Assessment and in particular in the development of ability tests. The test developer assumes which cognitive processes are necessary to solve a test item. Assessing the appropriateness of this assumption, a design matrix (or weight matrix) is created defining which cognitive processes (modeled as basic parameters in LLTM) are needed for which items. A toy example is given here: 
+
+![Toy example of a design matrix](/img/headers/designmatrixParal.png)
+
+The parAL package provides functions to assess the goodness-of-fit of this design matrix for the data, that is it provides a tool to assess the construct validity of the psychological test. Analogous to parallel analysis in factor analyses, random design matrices are simulated (in different ways) which gives a lower benchmark for the user-defined design matrix. Additionally, it is possible to get an upper benchmark as well.
+
+### Download
+parAL is available on [my Github Site](https://github.com/christinehohensinn/parAL).
+
+
+### Publication
+The analyses of two competence tests with LLTM and parAL are described in detail in [this paper](https://www.frontiersin.org/articles/10.3389/fpsyg.2017.00897/full)

@@ -1,0 +1,125 @@
+---
+title: pcIRT
+author: 'Christine Hohensinn'
+date: '2018-03-02'
+slug: pcirt
+
+weight:  10
+
+summary: "pcIRT estimates the Multidimensional Polytomous Rasch model and the Continuous Rating Scale model"
+image_preview: 'headers/iccMPRM.png'
+
+categories:
+  - R
+tags: ["R", "pcIRT", "IRT", "Rasch model"]
+---
+
+The R package *pcIRT* provides functions that estimate the following IRT models:
+
+- **Multidimensional Polytomous Rasch model (MPRM)** (Rasch, 1961)
+
+MPRM is a multidimensional IRT model for multicategorical data. For each response category, a latent dimension is assumed. The item characteristic curves of an example looks like this:
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(plotly)
+library(pcIRT)
+
+```
+
+
+```{r create_data}
+itpar <- matrix(rnorm(3*5, 0,1), 3, 5)
+itpar2 <- cbind(itpar,rowSums(itpar)*(-1))
+
+simdat <- simMPRM(itpar2, persons = 500, seed=3324)
+mprm_erg <- MPRM(simdat$datmat)
+
+pp1 <- seq(-5,5, by=0.1)
+pp2 <- seq(-5,5, by=0.1)
+
+
+object <- mprm_erg
+items <- 6
+l <- 1
+p1 <- 1
+
+#aus pcIRT package
+    pp_comb <- expand.grid(theta1 = pp1, theta2 = pp2)
+    m1 <- exp(pp_comb[,1] - object$itempar[1,l])
+    m2 <- exp(pp_comb[,2] - object$itempar[2,l])
+    
+    n <- rowSums(cbind(m1,m2, exp(0)))
+    respc1 <- m1/n
+    respc2 <- m2/n
+    r2 <- cbind(respc1, respc2)
+    respc3 <- 1-rowSums(r2)
+    
+    mat <- cbind(respc1, respc2, respc3)
+    colnames(mat) <- paste0("cat", 1:3)
+
+      zmat <- matrix(mat[,p1], ncol=length(pp1))
+      row.names(zmat) <- pp1
+      colnames(zmat) <- pp2
+
+      
+      zmat2 <- matrix(mat[,2], ncol=length(pp1))
+      zmat3 <- matrix(mat[,3], ncol=length(pp1))
+
+
+      
+
+```
+
+```{r plot}
+
+    axx <- list(
+      title = "theta cat 1",
+      backgroundcolor="#e6e6e6",
+      gridcolor="#cccccc",
+      showbackground=TRUE,
+      zerolinecolor="#4d4d4d"
+    )
+    axy <- list(
+      title = "theta cat 2",
+      backgroundcolor="#e6e6e6",
+      gridcolor="#cccccc",
+      showbackground=TRUE,
+      zerolinecolor="#4d4d4d"
+    )
+    axz <- list(
+      title = "resp. prob.",
+      backgroundcolor="#e6e6e6",
+      gridcolor="#cccccc",
+      showbackground=TRUE,
+      zerolinecolor="#4d4d4d"
+    )
+    
+    
+    plot_ly(showscale = FALSE, colors = c('#ff9900','#ff0000' )) %>%
+      add_surface(x = pp1, y = pp1, z = zmat, opacity = 0.8) %>%
+      add_surface(x = pp1, y = pp1, z = zmat2, opacity = 0.7) %>%
+      add_surface(x = pp1, y = pp1, z = zmat3, opacity = 0.7) %>%
+      config(displayModeBar = F) %>%
+      layout(scene = list(xaxis = axx, yaxis = axy, zaxis = axz))
+
+
+
+```
+
+
+
+- **Continuous Rating Scale model (CRSM)** (Müller, 1987)
+
+CRSM is an extension of the Rating Scale model. It can be used to analyze items with a visual analogue scale for example.
+
+- **Dichotomous Logistic Rasch model** (Rasch, 1960) 
+
+
+By defining the design matrix, restricted Rasch models (e.g. the Linear Logistic Rasch model) can be estimated, too. 
+
+
+### Download
+pcIRT is available on [CRAN](https://cran.r-project.org/web/packages/pcIRT/index.html). The developer version can be downloaded from [my Github Site](https://github.com/christinehohensinn/pcIRT).
+
