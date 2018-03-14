@@ -41,6 +41,6 @@ weight = 5
 
 ## About me
 
-I have studied Psychology at the University of Vienna with a focus on Psychological Assessment and Psychometrics. During my study of Psychology, I have discovered my passion for quantitative methods and started to study Statistics in addition. 
-My work as psychologist has concentrated on test and questionnaire development and issues such as the impact of design and other features of questionnaires, surveys, psychological and educational tests for example. Therefore I strongly used Item Response Theory. But my interests are spread more widely than this - I am generally interested in Applied Statistics in Social Sciences and Economics.
+I have studied Psychology at the University of Vienna with a focus on Psychological Assessment and Psychometrics. During my PhD, I have discovered my passion for quantitative methods and studied Statistics in addition. 
+My work as psychologist and scientist was concentrated on test and questionnaire development, analyses of large-scale assessment data and the impact of certain features such as test design and other features on test scores in questionnaires, surveys and psychological and educational tests. My main focus in Psychometrics is on the theory and application of Item Response Theory. But my interests are spread more widely. I am generally interested in Applied Statistics in Social Sciences and Economics.
  
