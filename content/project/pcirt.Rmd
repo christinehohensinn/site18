@@ -123,3 +123,7 @@ By defining the design matrix, restricted Rasch models (e.g. the Linear Logistic
 ### Download
 pcIRT is available on [CRAN](https://cran.r-project.org/web/packages/pcIRT/index.html). The developer version can be downloaded from [my Github Site](https://github.com/christinehohensinn/pcIRT).
 
+### Publication
+pcIRT (especially the application and usage of the MPRM) is described and illustrated in [this paper](https://www.jstatsoft.org/article/view/v084c02)
+
+

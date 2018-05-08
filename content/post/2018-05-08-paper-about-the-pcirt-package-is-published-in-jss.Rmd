@@ -1,0 +1,15 @@
+---
+title: Paper about the pcIRT package is published in JSS
+author: 'Christine Hohensinn'
+date: '2018-05-08'
+slug: Paper about the pcIRT package is published in JSS
+categories:
+  - R
+tags:
+  - pcIRT
+  - R
+  - Rasch model
+  - IRT
+---
+
+A paper with a detailed description about my R package pcIRT is published [in JSS] (https://www.jstatsoft.org/article/view/v084c02)now. Besides the technical details, it contains a description of the application with some illustrated examples.
